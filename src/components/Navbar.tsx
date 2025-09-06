@@ -1,10 +1,9 @@
-import { useEffect } from "react"
+import { useState } from "react"
+import MobileNav from "./MobileNav";
 
-const Navbar = ({ menuOpen, setMenuOpen }) => {
+const Navbar = () => {
+    const [menuOpen, setMenuOpen] = useState(false);
 
-    useEffect(() => {
-        document.body.style.overflow = menuOpen ? 'hidden' : '';
-    }, [menuOpen]);
     return (
         <nav className="fixed top-0 w-full z-40 p-4 shadow-lg h-16 flex items-center">
             <div className="container mx-auto max-w-5xl">
@@ -13,9 +12,14 @@ const Navbar = ({ menuOpen, setMenuOpen }) => {
                         Oma's Portfolio
                     </a>
 
-                    <div className="w-7 h-5 relative cursor-pointer z-40 md:hidden" onClick={() => setMenuOpen((prev) => !prev)}>
+                    <div 
+                        className="w-7 h-5 relative cursor-pointer z-40 md:hidden" 
+                        onClick={() => setMenuOpen((prev) => !prev)}
+                    >
                         &#9776;
                     </div>
+
+                    <MobileNav menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
 
                     <div className="hidden md:flex space-x-8">
                         <a 

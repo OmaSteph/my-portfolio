@@ -10,7 +10,7 @@ function App() {
 
   return (
     <>
-      <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+      <Navbar />
       <MobileNav menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       <Home />
       <About />   

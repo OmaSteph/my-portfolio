@@ -1,4 +1,10 @@
-const MobileNav = ({ menuOpen, setMenuOpen }) => {
+
+type MobileNavProps = {
+    menuOpen: boolean;
+    setMenuOpen: (open: boolean) => void;
+}
+
+const MobileNav = ({ menuOpen, setMenuOpen }: MobileNavProps) => {
     return (
         <div 
             className={`fixed top-0 left-0 w-full h-full z-40 flex flex-col items-center justify-center transition-all duration-300 ease-in-out 
