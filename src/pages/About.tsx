@@ -1,3 +1,5 @@
+import RevealOnScroll from "../components/RevealOnScroll";
+
 const About = () => {
 
     const frontendSkills = [
@@ -13,7 +15,8 @@ const About = () => {
       id="about"
       className="min-h-screen flex justify-center items-center py-20"
     >
-        <div className="text-center max-w-3xl px-4">
+        <RevealOnScroll>
+            <div className="text-center max-w-3xl px-4">
             <h2 className="text-3xl font-bold mb-4 bg-gradient-to-r from-blue-700 to-cyan-300 bg-clip-text text-transparent">
                 About Me
             </h2>
@@ -27,7 +30,7 @@ const About = () => {
             <div>
                 <div className="rounded-xl p-8 border-white/10 border hover:-translate-y-1 transition-all">
                     <h3 className="text-xl font-bold mb-6 text-blue-400">Frontend Skills</h3>
-                    <div className="flex flex-wrap justify-between items-center">
+                    <div className="flex flex-wrap gap-2 justify-between items-center">
                         {frontendSkills.map((skill) => (
                             <span 
                                 key={skill}
@@ -66,6 +69,7 @@ const About = () => {
                 </div>
             </div>
         </div>
+        </RevealOnScroll>
     </section>
   )
 }

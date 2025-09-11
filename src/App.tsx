@@ -4,6 +4,8 @@ import Navbar from './components/Navbar'
 import MobileNav from './components/MobileNav'
 import Home from './pages/Home';
 import About from './pages/About';
+import Projects from './pages/Projects';
+import Contact from './pages/Contact';
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -13,7 +15,9 @@ function App() {
       <Navbar />
       <MobileNav menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       <Home />
-      <About />   
+      <About />
+      <Projects />
+      <Contact />
     </>
   )
 }

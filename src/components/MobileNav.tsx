@@ -1,17 +1,37 @@
 
+import { useActiveSection } from "../hooks/useActiveSection"
+
 type MobileNavProps = {
     menuOpen: boolean;
     setMenuOpen: (open: boolean) => void;
 }
 
 const MobileNav = ({ menuOpen, setMenuOpen }: MobileNavProps) => {
+    const activeSection = useActiveSection(["home", "about", "projects", "contact"]);
+
+    const handleNavClick = (id: string) => {
+        const section = document.getElementById(id);
+        if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+        setMenuOpen(false);
+        }
+    };
+
+
+  const linkClass = (section: string) =>
+    `text-2xl font-semibold my-4 transform transition-transform duration-300 
+    ${menuOpen ? "translate-y-0 opacity-100" : "-translate-y-5 opacity-0"}
+    ${activeSection === section
+        ? "text-blue-500"
+        : "text-white hover:text-gray-300"
+    }`;
+
     return (
         <div 
-            className={`fixed top-0 left-0 w-full h-full z-40 flex flex-col items-center justify-center transition-all duration-300 ease-in-out 
-
+            className={`fixed top-0 left-0 w-full h-full bg-black z-40 flex flex-col items-center justify-center transition-all duration-300 ease-in-out 
             ${menuOpen 
-                ? 'h-screen opacity-100 pointer-events-auto' 
-                : 'h-0 opacity-0 pointer-events-none'
+                ? 'translate-x-0 opacity-90 pointer-events-auto' 
+                : 'translate-x-full opacity-0 pointer-events-none'
             }
             `}
         >
@@ -24,39 +44,27 @@ const MobileNav = ({ menuOpen, setMenuOpen }: MobileNavProps) => {
             &times;
         </button>
 
-        <a 
-            href="#home"
-            className={`text-2xl font-semibold text-white my-4 transform transition-transform duration-300
-                ${menuOpen ? 'translate-y-0 opacity-100' : '-translate-y-5 opacity-0'}
-            `}
-            onClick={() => setMenuOpen(false)}
+        <a  
+            onClick={() => handleNavClick("home")} 
+            className={linkClass("home")}
         >
             Home
         </a>
         <a 
-            href="#about"
-            className={`text-2xl font-semibold text-white my-4 transform transition-transform duration-300
-                ${menuOpen ? 'translate-y-0 opacity-100' : '-translate-y-5 opacity-0'}
-            `}
-            onClick={() => setMenuOpen(false)}
+            onClick={() => handleNavClick("about")} 
+            className={linkClass("about")}
         >
             About
         </a>
         <a 
-            href="#projects"
-            className={`text-2xl font-semibold text-white my-4 transform transition-transform duration-300
-                ${menuOpen ? 'translate-y-0 opacity-100' : '-translate-y-5 opacity-0'}
-            `}
-            onClick={() => setMenuOpen(false)}
+            onClick={() => handleNavClick("projects")} 
+            className={linkClass("projects")}
         >
             Projects
         </a>
         <a 
-            href="#contact"
-            className={`text-2xl font-semibold text-white my-4 transform transition-transform duration-300
-                ${menuOpen ? 'translate-y-0 opacity-100' : '-translate-y-5 opacity-0'}
-            `}
-            onClick={() => setMenuOpen(false)}
+            onClick={() => handleNavClick("contact")} 
+            className={linkClass("contact")}
         >
             Contact
         </a>

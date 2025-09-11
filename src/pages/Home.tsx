@@ -1,10 +1,13 @@
+import RevealOnScroll from "../components/RevealOnScroll"
+
 const Home = () => {
     return (
         <section 
             id="home" 
             className="min-h-screen flex items-center justify-center relative"
         >
-            <div className="text-center z-10 px-4">
+            <RevealOnScroll>
+                <div className="text-center z-10 px-4">
                 <h1 className="text-5xl font-bold md:text-7xl max-w-5xl mb-8 py-4 bg-gradient-to-r from-blue-800 via-blue-500 to-blue-200 bg-clip-text text-transparent leading-right">
                     Hi, I'm Ogunwa Chioma Stephanie
                 </h1>
@@ -32,6 +35,7 @@ const Home = () => {
                     </a>
                 </div>
             </div>
+            </RevealOnScroll>
         </section>
     )
 }
